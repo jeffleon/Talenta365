@@ -1,0 +1,31 @@
+import React from 'react';
+import { useParams } from "react-router";
+import { Button } from 'semantic-ui-react';
+import useFetch from '../../hooks/usefetch';
+import Button_ from '../utils/button';
+
+const DeleteBook = () => {
+    const {id} = useParams()
+    var method = 'DELETE'
+    const {data, loading, error} = useFetch(`http://localhost:5000/api/books/${id}`,method)
+    if (loading){
+        return(
+            <h1>Loading</h1>
+        )
+    }
+    if (error){
+        return(
+            <h1>Error</h1>
+        )
+    }
+    if (data){
+        return(
+            <div>
+                <h1>You Delete the Book {data.title}</h1>
+                <Button_ color={"primary"} allow={true} name={" Book Deleted Success "} link={`/Library`}/>
+            </div>
+        )
+    }
+}
+
+export default DeleteBook;
