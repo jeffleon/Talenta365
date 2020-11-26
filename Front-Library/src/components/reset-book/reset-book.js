@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 
 const ResetBook = () => {
+    // this component reset the borrow book to return it 
     var {id} = useParams()
     var history = useHistory()
     async function resetbook(){

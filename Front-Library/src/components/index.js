@@ -13,6 +13,7 @@ import BorrowBook from './borrow-book/borrow-book'
 import BorrowBooksUser from './borrow-books-user/borrow-books-user'
 import ResetBook from './reset-book/reset-book'
 const Main = () => {
+    // this component use react router dom to render all of this components in a specific route
     return(
         <div className="wrapper">
             <Header className="header" title={"Library Manager"}/>

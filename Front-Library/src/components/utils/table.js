@@ -4,6 +4,8 @@ import Button_ from './button'
 import {Link} from 'react-router-dom'
 
 const Table_ = ({data, title}) => {
+    // the main use for this component its the render table 
+    // go over the data to render the data depends of the title parameter you can change the type of table
     if (data.length > 0)
     {
         console.log(data)

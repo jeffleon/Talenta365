@@ -3,11 +3,11 @@ import {Button ,Row, Col, Label} from 'reactstrap'
 import {LocalForm, Control, Errors} from 'react-redux-form'
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import './form.css'
+import './css/form.css'
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len)
 const minLength = (len) => (val) => !(val) || (val.length >= len)
-
+// method  to fetch data get post put especificate the method the url and values about this method
 async function fetchData(method, url, values=null){
     var response = null
     if (method === 'get')
@@ -25,6 +25,10 @@ async function fetchData(method, url, values=null){
 }
 
 const Form_ = ({params, placeHol, title, method, data2change}) => {
+    // this component allows add params to render the labels = params
+    // the placeHol that mean place holders for the component
+    // title that especificate the type of form that want to render if its 'user', 'book' or 'borrow'
+    // if its 'borrow' type you need to change data for this reason was the last parameter 
     let history = useHistory();
     const submitForm = async (values) => {
         var url = null
@@ -35,12 +39,14 @@ const Form_ = ({params, placeHol, title, method, data2change}) => {
         } else{
             url = `http://localhost:5000/api/${title}/`
         }
+        // function to fetch data 
         await fetchData(method, url, values)
         history.push('/Library')
         if (method === 'PATCH'){
             window.location.reload(false);
         }
     }
+    // go over the params to render the form
     return(
         <LocalForm onSubmit={(values)=>submitForm(values)}>
             {params.map((element, index)=>{

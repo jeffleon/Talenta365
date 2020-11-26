@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import useFetch from '../../hooks/usefetch'
 
 const UpdateBook = () => {
+    // this component render the data about the form to update the data and fetch the data of the book
+    // to change 
     var params = ["title", "author" ,"year"]
     var placeHol = ["The Picture of Doryan Grey", "Oscar Wilde" ,"1891"]
     var {id} = useParams();

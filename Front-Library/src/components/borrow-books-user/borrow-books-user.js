@@ -7,6 +7,7 @@ import Header from '../utils/header'
 import { Grid } from 'semantic-ui-react'
 import './borrow-books-user.css'
 const BorrowBooksUser = () => {
+    // this component reuse the table component render the data that pass for this component
     const {id} = useParams()
     const {data, loading, error} = useFetch(`http://localhost:5000/api/books/user/${id}`)
     if (loading){

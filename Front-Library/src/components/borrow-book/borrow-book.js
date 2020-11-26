@@ -11,6 +11,8 @@ const BorrowBook = () =>{
     const [user, setUser] = useState("1");
     const {id} = useParams()
     const history = useHistory()
+    // when choose a user update the state of this book change the atribute borrow and add 
+    // the user in the userID attribute to associate with the other table
     async function borrowbook(){
        var url = `http://localhost:5000/api/books/${id}`
        const requestOptions = {
@@ -38,6 +40,8 @@ const BorrowBook = () =>{
     if (data){
         var user_filter = data.filter((element)=>element.id===parseInt(user))
         console.log(user_filter, user);
+        // this component render a mini form to choose what user want to add the book and then
+        // with a little filter show the card to this user
         return(
         <LocalForm >
                 <Row>
@@ -51,6 +55,7 @@ const BorrowBook = () =>{
                         </Control.select>
                     </Col>
                 </Row>
+                {Array.isArray(user_filter) && user_filter.length !== 0 &&
                 <Card>
                     <Card.Content>
                     <Card.Header>{user_filter[0].firstName + " " + user_filter[0].lastName}</Card.Header>
@@ -66,6 +71,7 @@ const BorrowBook = () =>{
                     </Card.Content>
                     <Button color="primary" onClick={borrowbook}>Borrow Book </Button>
                 </Card>
+                }
             </LocalForm>
         )
     }

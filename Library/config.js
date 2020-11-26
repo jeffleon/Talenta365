@@ -1,7 +1,7 @@
 module.exports = {
     database: {
-        username: "root",
-        password: "1018485718",
+        username: process.env.USER,
+        password: process.env.PASSWORD,
         database: "talenta",
         host:"localhost"
     }

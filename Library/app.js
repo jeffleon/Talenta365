@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+require('dotenv').config()
 const sequelize = require('./database/db')
 var apidxRouter = require('./routes/api/index');
 require('./database/asociations')

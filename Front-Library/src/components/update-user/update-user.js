@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import useFetch from '../../hooks/usefetch'
 
 const UpdateUser = () => {
+    // this component render the data about the form to update the data and fetch the data of the user
+    // to change 
     var params = ["firstName", "lastName", "email"]
     var placeHol = ["Pepito", "Perez", "pepitoperez@gmail.com"]
     var {id} = useParams();

@@ -3,6 +3,7 @@ import useFetch from '../../../hooks/usefetch'
 import Table_ from '../../utils/table'
 
 const Book = () => {
+    // this component only catch the information to pass to the table component to render
     const {data, loading, error} = useFetch('http://localhost:5000/api/books')
     if (loading){
         return(

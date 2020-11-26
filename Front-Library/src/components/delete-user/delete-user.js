@@ -4,6 +4,8 @@ import useFetch from '../../hooks/usefetch';
 import Button_ from '../utils/button';
 
 const DeleteUser = () => {
+    // this component render the view when the user its deleted show a message 
+    // that says what user its deleted 
     const {id} = useParams()
     var method = 'DELETE'
     const {data, loading, error} = useFetch(`http://localhost:5000/api/users/${id}`,method)
