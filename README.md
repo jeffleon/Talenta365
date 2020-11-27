@@ -11,7 +11,7 @@ you have to create a database with name 'talenta'
   - CREATE DATABASE [IF NOT EXISTS] talenta;
 
 then in the root of the Library folder add a .env file
-inside of this file add to variables with your respectively data
+inside of this file add two variables with your respectively data
   - PASSWORD = "xxxxx"
   - USER = "xxxxx"
 
