@@ -83,7 +83,31 @@ const Table_ = ({data, title}) => {
             )
         }else {
             return(
-                <h1>The table is empty</h1>
+                <Table definition width={10}>
+                    <Table.Header>
+                        <h1>This Table is empty</h1>
+                    </Table.Header>
+                    <Table.Body>
+                    </Table.Body>
+                    <Table.Footer fullWidth>
+                        <Table.Row>
+                            <Table.HeaderCell/>
+                            <Table.HeaderCell colSpan='8'>
+                                <Button
+                                    floated='right'
+                                    icon
+                                    labelPosition='left'
+                                    primary
+                                    size='small'
+                                >
+                                    <Link to={`/add-${title}`}>
+                                        <Icon name={title} /> Add {title}
+                                    </Link>
+                                </Button>
+                            </Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Footer>
+                </Table>
             )
         }
     }
