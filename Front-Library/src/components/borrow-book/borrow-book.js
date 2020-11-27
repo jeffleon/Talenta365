@@ -5,6 +5,7 @@ import {LocalForm, Control, Errors} from 'react-redux-form'
 import Search from '../utils/search'
 import { useHistory, useParams } from "react-router";
 import { Card, Icon, Image } from 'semantic-ui-react'
+import Loading from '../utils/loading'
 
 const BorrowBook = () =>{ 
     const {data, loading, error} = useFetch('http://localhost:5000/api/users')
@@ -29,7 +30,7 @@ const BorrowBook = () =>{
     }
     if (loading){
         return(
-            <h1>loading</h1>
+            <Loading/>
         )
     }
     if (error){

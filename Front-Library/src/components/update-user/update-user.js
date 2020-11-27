@@ -1,7 +1,8 @@
 import React from 'react';
 import Form_ from '../utils/form'
 import { useParams } from "react-router";
-import useFetch from '../../hooks/usefetch'
+import useFetch from '../../hooks/usefetch';
+import Loading from '../utils/loading'
 
 const UpdateUser = () => {
     // this component render the data about the form to update the data and fetch the data of the user
@@ -12,7 +13,7 @@ const UpdateUser = () => {
     const {data, loading, error} = useFetch(`http://localhost:5000/api/users/${id}`)
     if (loading){
         return(
-            <h1>Loading</h1>
+            <Loading/>
         )
     }
     if (error){

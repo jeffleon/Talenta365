@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { Button } from 'semantic-ui-react';
 import useFetch from '../../hooks/usefetch';
 import Button_ from '../utils/button';
+import Loading from '../utils/loading'
 
 const DeleteBook = () => {
     // this component render the view when the book its deleted show a message 
@@ -12,7 +13,7 @@ const DeleteBook = () => {
     const {data, loading, error} = useFetch(`http://localhost:5000/api/books/${id}`,method)
     if (loading){
         return(
-            <h1>Loading</h1>
+            <Loading/>
         )
     }
     if (error){

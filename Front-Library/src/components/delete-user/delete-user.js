@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from "react-router";
 import useFetch from '../../hooks/usefetch';
 import Button_ from '../utils/button';
+import Loading from '../utils/loading'
 
 const DeleteUser = () => {
     // this component render the view when the user its deleted show a message 
@@ -11,7 +12,7 @@ const DeleteUser = () => {
     const {data, loading, error} = useFetch(`http://localhost:5000/api/users/${id}`,method)
     if (loading){
         return(
-            <h1>Loading</h1>
+            <Loading/>
         )
     }
     if (error){
