@@ -6,7 +6,14 @@ Before starting, it is important to consider the following programs in order to 
   - Git
   - Node
   - Mysql
-you have to create a database with name 'talenta' with mysql then you need to create a .env file and add your credentials user and pasword of your mysql user
+
+you have to create a database with name 'talenta'
+  - CREATE DATABASE [IF NOT EXISTS] talenta;
+
+then in the root of the Library folder add a .env file
+inside of this file add to variables with your respectively data
+  - PASSWORD = "xxxxx"
+  - USER = "xxxxx"
 
 ## API rest
 Api rest for Manage Library page this page run in port 5000
