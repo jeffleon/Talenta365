@@ -4,12 +4,13 @@ import useFetch from '../../hooks/usefetch'
 import {LocalForm, Control, Errors} from 'react-redux-form'
 import Search from '../utils/search'
 import { useHistory, useParams } from "react-router";
-import { Card, Icon, Image } from 'semantic-ui-react'
 import Loading from '../utils/loading'
+import Card_ from '../utils/card'
 
 const BorrowBook = () =>{ 
     const {data, loading, error} = useFetch('http://localhost:5000/api/users')
     const [user, setUser] = useState("1");
+    const [countBooks, setCount] = useState(0);
     const {id} = useParams()
     const history = useHistory()
     // when choose a user update the state of this book change the atribute borrow and add 
@@ -24,10 +25,15 @@ const BorrowBook = () =>{
         await fetch(url,requestOptions);
         history.push('/Library')
     }
-    const handleSelector = (e) => {
-        console.log(e.target.value)
+    const handleSelector = async (e) => {
         setUser(e.target.value);
+        // do a fetch to view how many books has all users
+        var users = await fetch(`http://localhost:5000/api/books/user/${e.target.value}`);
+        var json = await users.json()
+        // has the count of books that has all users
+        setCount(json.length)
     }
+    console.log(countBooks)
     if (loading){
         return(
             <Loading/>
@@ -40,7 +46,6 @@ const BorrowBook = () =>{
     }
     if (data){
         var user_filter = data.filter((element)=>element.id===parseInt(user))
-        console.log(user_filter, user);
         // this component render a mini form to choose what user want to add the book and then
         // with a little filter show the card to this user
         return(
@@ -57,21 +62,7 @@ const BorrowBook = () =>{
                     </Col>
                 </Row>
                 {Array.isArray(user_filter) && user_filter.length !== 0 &&
-                <Card>
-                    <Card.Content>
-                    <Card.Header>{user_filter[0].firstName + " " + user_filter[0].lastName}</Card.Header>
-                    <Card.Description>
-                        {user_filter[0].email}
-                    </Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                    <a>
-                        <Icon name='book' />
-                        22 Books
-                    </a>
-                    </Card.Content>
-                    <Button color="primary" onClick={borrowbook}>Borrow Book </Button>
-                </Card>
+                    <Card_ handleButton={borrowbook} content={user_filter[0].firstName + " " + user_filter[0].lastName} description={user_filter[0].email} extra={countBooks}/> 
                 }
             </LocalForm>
         )

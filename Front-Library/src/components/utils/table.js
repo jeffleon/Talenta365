@@ -64,7 +64,7 @@ const Table_ = ({data, title}) => {
                                 <Table.Cell>{element.year}</Table.Cell>
                                 <Table.Cell> <Button_ color={"positive"} allow={element.borrow} link={`/borrow-book/${element.id}`} name={"Borrow Book"}/> </Table.Cell>
                                 <Table.Cell>{element.userId}</Table.Cell>
-                                <Table.Cell> <Button_ color={"negative"} allow={true} link={`/reset-book/${element.id}`} name={"Reset Book"}/> </Table.Cell>
+                                <Table.Cell> <Button_ color={"negative"} allow={true} link={`/reset-book/${element.id}`} name={"Return Book"}/> </Table.Cell>
                             </Table.Row>
                         )
                     }
