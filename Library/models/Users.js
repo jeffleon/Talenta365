@@ -1,6 +1,12 @@
 'use strict';
 const {Model, DataTypes} = require('sequelize')
 const sequelize = require('../database/db')
+// User model with attribute id , firstName , lastName , email
+// timestamps false to delete create_at and delete_at
+// validations
+// is alpha: only allow strings letters
+// len: specificate the min value and max value that is allowed
+// isEmail: only allow a valid email
 class User extends Model{}
 User.init({
   id: {

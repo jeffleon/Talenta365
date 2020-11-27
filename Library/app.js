@@ -3,12 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// allow all entry comunications with the API
 const cors = require('cors');
+// allow enviroment variables
 require('dotenv').config()
 const sequelize = require('./database/db')
 var apidxRouter = require('./routes/api/index');
 require('./database/asociations')
 var app = express();
+
+// config to update the models with sequelize
 sequelize.sync({force:false}).then(()=>{
   console.log("Nos hemos conectado a la base de datos")
 }).catch(error=>{

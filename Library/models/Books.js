@@ -2,6 +2,11 @@
 const {Model, DataTypes} = require('sequelize');
 const dataTypes = require('sequelize/lib/data-types');
 const sequelize = require('../database/db')
+// Book model with attribute id , title , author , year borrow
+// timestamps false to delete create_at and delete_at
+// validation
+// is alpha: only allow strings letters
+// len: specificate the min value and max value that is allowed
 class Book extends Model{}
 Book.init({
   id: {
