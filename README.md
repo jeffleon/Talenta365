@@ -15,6 +15,13 @@ inside of this file add two variables with your respectively data
   - PASSWORD = "xxxxx"
   - USER = "xxxxx"
 
+### POPULATE DATABASE
+go to the root 
+```
+cd Library
+node seed
+```
+
 ## API rest
 Api rest for Manage Library page this page run in port 5000
 
