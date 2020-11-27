@@ -13,11 +13,11 @@ const users = [
 ]
 
 const books = [
-    {"title": "The Ruby on Rails Tutorial", "year": 2020, "author": "Michael Hartl", "borrow": true, "userId": 1},
-    {"title": "Mastering Go", "year": "2019", "author": "Mihalis Tsoukalos", "borrow": true, "userId": 2 },
-    {"title": "Django for Professionals", "year": "2019", "author": "William S. Vincent", "borrow": true, "userId": 3},
-    {"title": "Node.js 8 the Right Way", "year": 2018, "author": "Jim Wilson", "borrow": true, "userId": 4},
-    {"title": "Modern Full-Stack Development", "year": 2020, "author": "Frank Zammetti", "borrow": true, "userId": 5}
+    {"title": "The Ruby on Rails Tutorial", "year": 2020, "author": "Michael Hartl", "borrow": false, "userId": 1},
+    {"title": "Mastering Go", "year": "2019", "author": "Mihalis Tsoukalos", "borrow": false, "userId": 2 },
+    {"title": "Django for Professionals", "year": "2019", "author": "William S. Vincent", "borrow": false, "userId": 3},
+    {"title": "Node.js 8 the Right Way", "year": 2018, "author": "Jim Wilson", "borrow": false, "userId": 4},
+    {"title": "Modern Full-Stack Development", "year": 2020, "author": "Frank Zammetti", "borrow": false, "userId": 5}
 ]
 
 sequelize.sync({force:true}).then(()=>{

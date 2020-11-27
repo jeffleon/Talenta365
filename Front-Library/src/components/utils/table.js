@@ -1,7 +1,11 @@
 import React from 'react'
 import { Table, Button, Icon } from 'semantic-ui-react'
 import Button_ from './button'
-import {Link} from 'react-router-dom'
+import ContentTableBook from './contentTableBook';
+import ContentTableUser from './contentTableUser';
+import ContentTableBorrow from './contentTableBorrow';
+import {Link} from 'react-router-dom';
+
 
 const Table_ = ({data, title}) => {
     // the main use for this component its the render table 
@@ -28,44 +32,19 @@ const Table_ = ({data, title}) => {
                 {data.map((element, index)=>{
                     if (title === 'user'){
                         return(
-                            <Table.Row key={index}>
-                                <Table.Cell>{element.id}</Table.Cell>
-                                <Table.Cell>{element.firstName}</Table.Cell>
-                                <Table.Cell>{element.lastName}</Table.Cell>
-                                <Table.Cell>{element.email}</Table.Cell>
-                                <Table.Cell> <Button_ color={"positive"} allow={true} name={"Borrow Books"} link={`/borrow-books/user/${element.id}`}/> </Table.Cell>
-                                <Table.Cell> <Button_ color={"primary"} allow={true} name={"Update User"} link={`/update-user/${element.id}`}/> </Table.Cell>
-                                <Table.Cell> <Button_ color={"negative"} name={"Delete User"} link={`/delete-user/${element.id}`}/> </Table.Cell>
-                            </Table.Row>
+                            <ContentTableUser user={element} key={index} />
                         )
                     }
                     if (title === 'book')
                     {
                         return(
-                            <Table.Row key={index}>
-                                <Table.Cell>{element.id}</Table.Cell>
-                                <Table.Cell>{element.title}</Table.Cell>
-                                <Table.Cell>{element.author}</Table.Cell>
-                                <Table.Cell>{element.year}</Table.Cell>
-                                <Table.Cell> <Button_ color={"positive"} allow={element.borrow} link={`/borrow-book/${element.id}`} name={"Borrow Book"}/> </Table.Cell>
-                                <Table.Cell>{element.userId}</Table.Cell>
-                                <Table.Cell> <Button_ color={"primary"} allow={true} link={`/update-book/${element.id}`} name={"Update Book"}/> </Table.Cell>
-                                <Table.Cell> <Button_ color={"negative"} name={"Delete Book"} link={`/delete-book/${element.id}`}  /> </Table.Cell>
-                            </Table.Row>
+                            <ContentTableBook book={element} key={index} />
                         )
                     }
                     if (title === 'borrow')
                     {
                         return(
-                            <Table.Row key={index}>
-                                <Table.Cell>{element.id}</Table.Cell>
-                                <Table.Cell>{element.title}</Table.Cell>
-                                <Table.Cell>{element.author}</Table.Cell>
-                                <Table.Cell>{element.year}</Table.Cell>
-                                <Table.Cell> <Button_ color={"positive"} allow={element.borrow} link={`/borrow-book/${element.id}`} name={"Borrow Book"}/> </Table.Cell>
-                                <Table.Cell>{element.userId}</Table.Cell>
-                                <Table.Cell> <Button_ color={"negative"} allow={true} link={`/reset-book/${element.id}`} name={"Return Book"}/> </Table.Cell>
-                            </Table.Row>
+                            <ContentTableBorrow book={element} key={index} />
                         )
                     }
                 })}
@@ -97,9 +76,16 @@ const Table_ = ({data, title}) => {
             </Table>
         )
     } else{
-        return(
-            <h1>The table is empty</h1>
-        )
+        if(title === 'borrow')
+        {
+            return(
+                <h1>This user dont have any Borrow book</h1>
+            )
+        }else {
+            return(
+                <h1>The table is empty</h1>
+            )
+        }
     }
 }
 
